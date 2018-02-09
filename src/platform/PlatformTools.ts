@@ -29,92 +29,92 @@ export class PlatformTools {
      * This operation only supports on node platform
      */
     static load(name: string): any {
+        return require("mssql");
+        // // if name is not absolute or relative, then try to load package from the node_modules of the directory we are currenly in
+        // // this is useful when we are using typeorm package globally installed and it accesses drivers
+        // // that are not installed globally
 
-        // if name is not absolute or relative, then try to load package from the node_modules of the directory we are currenly in
-        // this is useful when we are using typeorm package globally installed and it accesses drivers
-        // that are not installed globally
+        // try {
 
-        try {
+        //     // switch case to explicit require statements for webpack compatability.
 
-            // switch case to explicit require statements for webpack compatability.
+        //     switch (name) {
 
-            switch (name) {
+        //         /**
+        //         *mongodb
+        //         */
+        //         case "mongodb":
+        //             return require("mongodb");
 
-                /**
-                *mongodb
-                */
-                case "mongodb":
-                    return require("mongodb");
+        //         /**
+        //         *mysql
+        //         */
+        //         case "mysql":
+        //             return require("mysql");
 
-                /**
-                *mysql
-                */
-                case "mysql":
-                    return require("mysql");
+        //         case "mysql2":
+        //             return require("mysql2");
 
-                case "mysql2":
-                    return require("mysql2");
+        //         /**
+        //         *oracle
+        //         */
+        //         case "oracledb":
+        //             return require("oracledb");
 
-                /**
-                *oracle
-                */
-                case "oracledb":
-                    return require("oracledb");
+        //         /**
+        //         *postgres
+        //         */
+        //         case "pg":
+        //             return require("pg");
 
-                /**
-                *postgres
-                */
-                case "pg":
-                    return require("pg");
+        //         case "pg-native":
+        //             return require("pg-native");
 
-                case "pg-native":
-                    return require("pg-native");
+        //         case "pg-query-stream":
+        //             return require("pg-query-stream");
 
-                case "pg-query-stream":
-                    return require("pg-query-stream");
+        //         /**
+        //         *redis
+        //         */
+        //         case "redis":
+        //             return require("redis");
 
-                /**
-                *redis
-                */
-                case "redis":
-                    return require("redis");
+        //         /**
+        //         *sqlite
+        //         */
+        //         case "sqlite3":
+        //             return require("sqlite3");
 
-                /**
-                *sqlite
-                */
-                case "sqlite3":
-                    return require("sqlite3");
+        //         /**
+        //         *sqlserver
+        //         */
+        //         case "mssql":
+        //             return require("mssql");
 
-                /**
-                *sqlserver
-                */
-                case "mssql":
-                    return require("mssql");
+        //         /**
+        //         *other modules
+        //         */
+        //         case "mkdirp":
+        //             return require("mkdirp");
 
-                /**
-                *other modules
-                */
-                case "mkdirp":
-                    return require("mkdirp");
+        //         case "path":
+        //             return require("path");
 
-                case "path":
-                    return require("path");
+        //         /**
+        //         *default
+        //         */
+        //         default:
+        //             return require(name);
 
-                /**
-                *default
-                */
-                default:
-                    return require(name);
+        //     }
 
-            }
+        // } catch (err) {
+        //     if (!path.isAbsolute(name) && name.substr(0, 2) !== "./" && name.substr(0, 3) !== "../") {
+        //         return require(path.resolve(process.cwd() + "/node_modules/" + name));
+        //     }
 
-        } catch (err) {
-            if (!path.isAbsolute(name) && name.substr(0, 2) !== "./" && name.substr(0, 3) !== "../") {
-                return require(path.resolve(process.cwd() + "/node_modules/" + name));
-            }
-
-            throw err;
-        }
+        //     throw err;
+        // }
     }
 
     /**
